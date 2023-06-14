@@ -1,0 +1,48 @@
+package kr.co.tjoeun.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import kr.co.tjoeun.beans.TestBean1;
+
+@Controller
+public class TestController {
+
+	@GetMapping("/input_data")
+	public String inputData() {
+		return "input_data";
+	}
+	
+	@PostMapping("/input_result")
+	//public String inputProceduce(@ModelAttribute("bean1") TestBean1 bean1) {
+	public String inputProcedure(@Valid TestBean1 bean1, BindingResult result) {
+		System.out.printf("data1 : %s\n", bean1.getData1());
+		System.out.printf("data2 : %s\n", bean1.getData2());
+		System.out.printf("BindingResult : %s\n", result);
+		if(result.hasErrors()) {
+			//유효성 위반 결과 모두 가져옴
+			for(ObjectError error : result.getAllErrors()) {
+				System.out.printf("에러 메세지 : %s\n", error.getDefaultMessage());
+				System.out.printf("에 러 코 드 : %s\n", error.getCode());
+				System.out.printf("Object name : %s\n", error.getObjectName());
+				String[] errorCodes = error.getCodes();
+				for(String code : errorCodes) {
+					System.out.println(code);
+				}
+				if(errorCodes[0].equals("Size.testBean1.data1")) {
+					System.out.println("data1에는 2글자에서 10글자까지만 입력할 수 있습니다.");
+				}else if(errorCodes[0].equals("Max.testBean1.data2")) {
+					System.out.println("data2의 값은 int type이며, 100을 초과할 수 없습니다.");
+				}
+				System.out.println("-----------------------------------------");
+			}
+			return "input_data";
+		}
+		return "input_success";
+	}
+}

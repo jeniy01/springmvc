@@ -1,0 +1,12 @@
+Message
+
+properties 파일을 Message로 등록해서
+					ㄴ MessageSource의 객체를 사용해서 등록함
+					ㄴ 일정 시간 마다 갱신되는 ReloadableResourceBundleMessageSource도 사용
+jsp에서도 사용하도록 함
+다국어 처리도 가능함
+
+ServletAppContext.java에서 등록함
+
+Message로 등록된 data를 Java code에서 사용하는 경우, MessageSource(ReloadableResourceBundleMessageSource) 클래스를 주입 받아서 사용함
+														ㄴ Locale을 지정해서 다국어 처리도 가능함
