@@ -1,0 +1,3 @@
+ctrl+a
+ctrl+f
+정렬
