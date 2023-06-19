@@ -1,3 +1,4 @@
 ctrl+a
-ctrl+f
-정렬
+ctrl+shift+f
+
+ctrl+shift+tab
