@@ -20,6 +20,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 	<!-- 게시판 미리보기 부분 -->
@@ -210,6 +211,7 @@
 	</div>
 
 <c:import url="/WEB-INF/views/include/bottom_menu.jsp" />
+
 </body>
 </html>
 

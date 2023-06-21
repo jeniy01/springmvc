@@ -7,29 +7,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
-	@GetMapping("/main")
-	public String boradMain() {
+  
+  @GetMapping("/main")
+  public String boradMain() {
 	return "board/main";
-	}
-	  
-	@GetMapping("/read")
-	public String boradRead() {
+  }
+  
+  @GetMapping("/read")
+  public String boradRead() {
 	return "board/read";
-	}
-	    
-	@GetMapping("/write")
-	public String boradWrite() {
+  }
+    
+  @GetMapping("/write")
+  public String boradWrite() {
 	return "board/write";
-	}
-	  
-	@GetMapping("/modify")
-	public String boradModify() {
+  }
+  
+  @GetMapping("/modify")
+  public String boradModify() {
 	return "board/modify";
-	}
-	  
-	@GetMapping("/delete")
-	public String boradDelete() {
+  }
+  
+  @GetMapping("/delete")
+  public String boradDelete() {
 	return "board/delete";
-	} 
+  }
+  
 }
+
+
+
+

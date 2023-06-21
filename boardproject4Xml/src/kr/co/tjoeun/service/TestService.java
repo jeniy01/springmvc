@@ -7,11 +7,14 @@ import kr.co.tjoeun.dao.TestDAO;
 
 @Service
 public class TestService {  
-	@Autowired
-	TestDAO testDAO;
-	
-	public String testServiceMethod() {
-		String str1 = testDAO.testDaoMethod();
-		return str1 ;
-	} 
+  @Autowired
+  TestDAO testDAO;
+  
+  public String testServiceMethod() {
+	String str1 = testDAO.testDaoMethod();
+	return str1 ;
+  }
+  
+  
+  
 }

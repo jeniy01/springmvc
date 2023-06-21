@@ -11,11 +11,12 @@ import kr.co.tjoeun.dao.TopMenuDAO;
 @Service
 public class TopMenuService {
   
-	@Autowired
-	private TopMenuDAO topMenuDAO;
+  @Autowired
+  private TopMenuDAO topMenuDAO;
   
-	public List<BoardInfoBean> getTopMenuList(){
-		List<BoardInfoBean> topMenuList = topMenuDAO.getTopMenuList();
-		return topMenuList;
-	}
+  public List<BoardInfoBean> getTopMenuList(){
+	List<BoardInfoBean> topMenuList = topMenuDAO.getTopMenuList();
+	return topMenuList;
+  }
+
 }

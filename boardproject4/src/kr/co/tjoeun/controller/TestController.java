@@ -17,6 +17,7 @@ public class TestController {
   public String test1(Model model) {	
 	String str1 = testService.testServiceMethod();
 	model.addAttribute("str1", str1);
+	
 	return "test1";
   }
 }

@@ -14,49 +14,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.tjoeun.bean.UserBean;
 import kr.co.tjoeun.service.UserService;
-import kr.go.tjoeun.validator.UserValidator;
+import kr.co.tjoeun.validator.UserValidator;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	
-	@Autowired
-	private UserService userService;
   
-	@GetMapping("/login")
-	public String login() {
+  @Autowired
+  private UserService userService;
+  
+  
+  @GetMapping("/login")
+  public String login() {
 	return "user/login";
-	}
-	  
-	@GetMapping("/join")
-	public String join(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
+  }
+  
+  @GetMapping("/join")
+  public String join(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
 	return "user/join";
-	}
-	  
-	@GetMapping("/modify")
-	public String modify() {
+  }
+  
+  @PostMapping("/join_procedure")
+  public String joinProcedure(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean,
+	                          BindingResult result){
+	if(result.hasErrors()) {
+	  return "user/join";
+	}	
+	userService.addUserInfo(joinUserBean);	
+	return "user/join_success";
+  }
+  
+  @GetMapping("/modify")
+  public String modify() {
 	return "user/modify";
-	}
-	  
-	@GetMapping("/logout")
-	public String logout() {
+  }
+  
+  @GetMapping("/logout")
+  public String logout() {
 	return "user/logout";
-	}
-	  
-	@PostMapping("/join_procedure")
-	public String joinProcedure(@Valid @ModelAttribute("joinUserBean") UserBean joinUserBean, BindingResult result) {
-		if(result.hasErrors()) {
-			return "user/join";
-		}
-		
-		userService.addUserInfo(joinUserBean);
-		
-		return "user/join_success";
-	}
-	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		UserValidator userValidator1 = new UserValidator();
-		binder.addValidators(userValidator1);
-	}
+  }
+  
+  @InitBinder
+  public void initBinder(WebDataBinder binder) {
+	UserValidator userValidator1 = new UserValidator();
+	binder.addValidators(userValidator1);
+  }
 }
