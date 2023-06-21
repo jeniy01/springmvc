@@ -23,7 +23,7 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form action="${root }board/modify" method="post">
+					<form action="${root }board/modify" method="get">
 						<div class="form-group">
 							<label for="board_writer_name">작성자</label>
 							<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="홍길동" disabled="disabled"/>

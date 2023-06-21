@@ -1,4 +1,4 @@
 ctrl+a
 ctrl+shift+f
 
-ctrl+shift+tab
+shift+tab
