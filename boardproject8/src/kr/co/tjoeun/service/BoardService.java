@@ -3,17 +3,30 @@ package kr.co.tjoeun.service;
 
 import java.io.File;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.tjoeun.bean.ContentBean;
+import kr.co.tjoeun.bean.UserBean;
+import kr.co.tjoeun.dao.BoardDAO;
 
 
 @Service
 @PropertySource("/WEB-INF/properties/option.properties")
 public class BoardService {
+  
+  @Autowired
+  private BoardDAO boardDAO;
+  
+  // Session Scope 에 있는 UserBean 객체 주입받기
+  @Resource(name = "loginUserBean")
+  private UserBean loginUserBean;
+  
   
   // 파일 업로드 경로
   @Value("${path.upload}")
@@ -47,6 +60,17 @@ public class BoardService {
   	  System.out.println("fileName : " + fileName);
 	}
 	
-  }
+	// 현재 로그인 상태인 사람이 작성자가 됨
+	// 작성자 인덱스번호(content_writer_idx) 에
+	// 현재 로그인 상태인 사람(UserBean("loginUserBean"))의 
+	// user_idx 를 할당함	
+	writeContentBean.setContent_writer_idx(loginUserBean.getUser_idx());
+	
+	// Service 에서 DAO(Repository) 에 있는 addContentInfo() 호출하기
+	boardDAO.addContentInfo(writeContentBean);
+	
+	
+  } // addContentInfo
+  
 
-}
+} // Service Class

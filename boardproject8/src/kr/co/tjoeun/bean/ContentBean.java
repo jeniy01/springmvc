@@ -21,6 +21,8 @@ public class ContentBean {
   private MultipartFile upload_file;
   
   private String content_file;
+  
+  // 
   private int content_writer_idx;
   private int content_board_idx;
   private String content_date;
