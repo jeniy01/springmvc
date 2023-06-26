@@ -24,6 +24,8 @@ public class HomeController {
 	  
 	    // System.out.println("loginUserBean :" + loginUserBean);
 	    
+	    System.out.println(request.getServletContext().getRealPath("/"));
+	    
 		return "redirect:/main";
 		
 		/*

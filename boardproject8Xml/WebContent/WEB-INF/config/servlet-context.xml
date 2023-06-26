@@ -37,8 +37,11 @@
        
     <!--  properties 파일의 내용을 사용하는 Bean 을 정의함 -->
     <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <beans:property name="location">
-            <beans:value>/WEB-INF/properties/db.properties</beans:value>
+        <beans:property name="locations">
+            <beans:list>
+	            <beans:value>/WEB-INF/properties/db.properties</beans:value>
+	            <beans:value>/WEB-INF/properties/option.properties</beans:value>
+            </beans:list>
         </beans:property>
     </beans:bean>
     
@@ -91,7 +94,8 @@
     </beans:bean>
     
     <!-- StandardServletMultipartResolver 등록 -->
-    <beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+    <beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" 
+                   id="multipartResolver"/>
     
 </beans:beans>
 

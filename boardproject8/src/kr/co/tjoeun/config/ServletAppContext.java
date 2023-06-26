@@ -178,10 +178,6 @@ public class ServletAppContext implements WebMvcConfigurer{
   public StandardServletMultipartResolver multipartResolver() {
 	return new StandardServletMultipartResolver();	
   }
-  
-  
-  
- 
 	
 }
 
