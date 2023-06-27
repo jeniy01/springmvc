@@ -10,6 +10,19 @@ import kr.co.tjoeun.bean.ContentBean;
 
 public interface BoardMapper {
   
+  /*
+      content_table 에 insert 하기 #{content_file, jdbcType=VARCHAR}
+  	     ㄴ 이미지를 추가 하지 않으면 content_file 에 들어오는 값이 null 이 되는데 
+  	        이 때, null 값이 들어와도 오류가 발생하지 않게 하려면 
+  	        jdbcType=VARCHAR 를 설정함 
+	    
+	    현재 sequence 값을 가져와서  
+	    SELECT content_seq.nextval FROM DUAL	    
+	    ContentBean 객체의 멤버변수 content_idx에 할당한 후,
+	    insert 문을 실행함
+	    VALUES(content_seq.nextval, ...) -> VALUES(#{content_idx}, ...) 으로 변경함
+	    	
+   */
   // 현재 sequence 값 가져오기
   @SelectKey(statement="SELECT content_seq.nextval FROM DUAL",
 	         keyProperty="content_idx", before=true, resultType=int.class)

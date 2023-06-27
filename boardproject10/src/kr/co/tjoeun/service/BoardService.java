@@ -28,7 +28,6 @@ public class BoardService {
   @Resource(name = "loginUserBean")
   private UserBean loginUserBean;
   
-  
   // 파일 업로드 경로
   @Value("${path.upload}")
   private String pathUpload;
@@ -53,13 +52,13 @@ public class BoardService {
 	System.out.println(writeContentBean.getUpload_file().getSize());
 	System.out.println(writeContentBean.getUpload_file());
 	
-	MultipartFile uploadFile =  writeContentBean.getUpload_file();
+	MultipartFile upload_file =  writeContentBean.getUpload_file();
 	
-	if(uploadFile.getSize() > 0) {	
+	if(upload_file.getSize() > 0) {	
   	  // 파일 이름
-  	  String fileName = saveUploadFile(uploadFile);
-  	  System.out.println("fileName : " + fileName);
-  	  writeContentBean.setContent_file(fileName);
+  	  String file_name = saveUploadFile(upload_file);
+  	  System.out.println("file_name : " + file_name);
+  	  writeContentBean.setContent_file(file_name);
 	}
 	
 	// 현재 로그인 상태인 사람이 작성자가 됨
