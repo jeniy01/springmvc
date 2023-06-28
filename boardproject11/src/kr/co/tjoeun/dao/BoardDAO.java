@@ -14,6 +14,14 @@ public class BoardDAO {
   
   @Autowired
   private BoardMapper boardMapper;
+  /*
+  //페이징 처리 테스트 위해서 대량 게시글 업로드
+  public void addContentInfo(ContentBean writeContentBean) {
+	  for(int i = 0; i < 564; i++) {
+		  boardMapper.addContentInfo(writeContentBean);
+	  }
+  }
+  */
   
   public void addContentInfo(ContentBean writeContentBean) {
 	  boardMapper.addContentInfo(writeContentBean);
