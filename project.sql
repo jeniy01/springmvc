@@ -31,9 +31,13 @@ create table content_table(
 );
 -- insert into content_table VALUES ();
 select * from content_table;
+delete from content_table;
+commit;
+select * from user_table;
+drop table content_table;
 
 drop sequence user_seq;
---drop sequence content_seq;
+drop sequence content_seq;
 
 create sequence user_seq
 start with 0
@@ -46,3 +50,12 @@ increment by 1
 minvalue 0;
 
 commit;
+
+-- insert into content_table(content_idx, content_subject, content_text, content_file, content_writer_idx, content_board_idx, content_date) values(content_seq.nextval, #{content_subject}, #{content_text}, #{content_file}, #{content_writer_idx}, #{content_board_idx}, sysdate);
+
+-- 전체 글 개수
+-- SELECT count (*) FROM content_table WHERE content_board_idx = 1;
+-- SELECT * FROM content_table;
+-- SELECT count (*) FROM content_table WHERE content_board_idx = 2;
+-- SELECT count (*) FROM content_table WHERE content_board_idx = 3;
+-- SELECT count (*) FROM content_table WHERE content_board_idx = 4;
