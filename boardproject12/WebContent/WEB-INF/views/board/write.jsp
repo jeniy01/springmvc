@@ -16,7 +16,6 @@
 </head>
 <body>
 
-
 <c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 <div class="container" style="margin-top:100px">
@@ -25,9 +24,9 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form:form action="${root }board/write_procedure" method="post" 
-					           modelAttribute="writeContentBean" enctype="multipart/form-data">
-					<form:hidden path="content_board_idx" />           
+					<form:form action="${root }board/write_procedure" method="post" modelAttribute="writeContentBean" enctype="multipart/form-data">
+					<form:hidden path="content_board_idx" />
+					<input type="hidden" name="page" value="${page }" />        
 					<div class="form-group">
 						<form:label path="content_subject">제목</form:label>
 						<form:input path="content_subject" class="form-control"/>

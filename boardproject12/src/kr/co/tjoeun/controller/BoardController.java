@@ -74,20 +74,24 @@ public class BoardController {
     
   @GetMapping("/write")
   public String boradWrite(@ModelAttribute("writeContentBean") ContentBean writeContentBean,
-	                       @RequestParam("board_info_idx") int board_info_idx) {
+	                       @RequestParam("board_info_idx") int board_info_idx,
+	                       @RequestParam("page") int page, Model model) {
 	     
 	writeContentBean.setContent_board_idx(board_info_idx);
+	model.addAttribute("page", page);
 	
 	return "board/write";
   }
   
   @PostMapping("/write_procedure")
   public String writeProcedure(@Valid @ModelAttribute("writeContentBean") ContentBean writeContentBean,
-	                           BindingResult result) {
+	                           BindingResult result,
+	                           @RequestParam("page") int page, Model model) {	  
 	if(result.hasErrors()) {
 	  return "board/write";
 	}
 	boardService.addContentInfo(writeContentBean);
+	model.addAttribute("page", page);
 	
 	return "board/write_success";	
   }
